@@ -1,0 +1,8 @@
+## Interface: 70000
+## Title: OrbsUi
+## Notes: Modulable ressource orb diablo like system for World of Warcraft
+## Version: 0.0
+
+embeds.xml
+
+Core.lua
