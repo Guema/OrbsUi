@@ -1,0 +1,27 @@
+{
+  "name": "orbsui",
+  "version": "0.0.0",
+  "description": "Modulable ressource orb diablo like system for World of Warcraft",
+  "main": "Core.lua",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guema/OrbsUi.git"
+  },
+  "keywords": [
+    "Orbs",
+    "Diablo",
+    "Ui"
+  ],
+  "author": "Guema",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guema/OrbsUi/issues"
+  },
+  "homepage": "https://github.com/Guema/OrbsUi#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
