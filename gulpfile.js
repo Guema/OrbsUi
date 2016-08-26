@@ -1,6 +1,6 @@
 // Requiring node packages :
 var gulp = require('gulp');
-var clean = require('gulp-clean');
+var del = require('del');
 
 // Variables :
 var AddonName = 'OrbsUi';
@@ -11,23 +11,31 @@ var toInclude = [
   './**/*.toc',
   'LICENSE',
   'README.md',
+  './Libs/**'
 ];
 var toExclude = [
 
 ];
 
-var watcher = gulp.watch(toInclude, ['default']);
+gulp.task('default', ['watch']);
 
-watcher.on('change', function(event) {
-  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-});
-
-gulp.task('build', function() {
-  return gulp.src(toInclude).pipe(gulp.dest(WowPATH + '/Interface/Addons/' + AddonName));
+gulp.task('build', ['clean'], function() {
+  var paths = toInclude.slice();
+  toExclude.forEach(function(element) {
+    paths.push('!' + element);
+  }, this);
+  console.log(paths);
+  return gulp.src(paths, { base: '.' }).pipe(gulp.dest(WowPATH + '/Interface/Addons/' + AddonName));
 });
 
 gulp.task('clean', function() {
-  return gulp.src(WowPATH + '/Interface/Addons/' + AddonName + "/*", {read: false}).pipe(clean());
+  return del(WowPATH + '/Interface/Addons/' + AddonName + "/*", {force: true});
 });
 
-gulp.task('default', ['clean','build']);
+gulp.task('watch', function() {
+  var watcher = gulp.watch(toInclude, ['clean', 'build']);
+  watcher.on('change', function(event) {
+    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+  });  
+  return watcher;
+});
