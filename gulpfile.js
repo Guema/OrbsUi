@@ -24,7 +24,6 @@ gulp.task('build', ['clean'], function() {
   toExclude.forEach(function(element) {
     paths.push('!' + element);
   }, this);
-  console.log(paths);
   return gulp.src(paths, { base: '.' }).pipe(gulp.dest(WowPATH + '/Interface/Addons/' + AddonName));
 });
 
