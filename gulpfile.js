@@ -17,7 +17,7 @@ var toExclude = [
 
 ];
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['build', 'watch']);
 
 gulp.task('build', ['clean'], function() {
   var paths = toInclude.slice();
